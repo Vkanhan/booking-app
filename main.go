@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
@@ -24,27 +27,34 @@ func main() {
 
 		fmt.Println("Enter your first name: ")
 		fmt.Scan(&firstName)
-		
+
 		fmt.Println("Enter your last name: ")
 		fmt.Scan(&lastName)
-		
+
 		fmt.Println("Enter your email: ")
 		fmt.Scan(&email)
-		
+
 		fmt.Println("Enter the number of ticketes: ")
 		fmt.Scan(&userTicket)
-		
+
 		remainingTicket = remainingTicket - userTicket
-		
+
 		//var bookings [50]string
 		//bookings[0] = firstName + " " + lastName //array
 		bookings = append(bookings, firstName+" "+lastName)
-		
+
 		fmt.Printf("%v tickets are remaining for %v\n", remainingTicket, conferenceName)
 		fmt.Printf("Thank you %v %v for booking %v tickets! You will recieve a confirmation email at %v\n", firstName, lastName, userTicket, email)
-		
+
+		firstNames := []string{}
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+
+			fmt.Printf("First names of the bookings are: %v\n", firstNames)
+		}
+
 		fmt.Printf("These are all our bookings: %v\n", bookings)
 	}
 
-	
 }
