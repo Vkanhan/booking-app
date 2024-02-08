@@ -61,9 +61,9 @@ func greetUsers() {
 func getfirstNames() []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
-		firstNames = append(firstNames, booking["firstNames"])
+		firstNames = append(firstNames, booking["firstName"])
 	}
-	return firstNames
+	return firstNames 
 }
 
 func getUserInput() (string, string, string, uint) {
@@ -100,6 +100,8 @@ func bookTickets(userTicket uint, firstName string, lastName string, email strin
 	userData["numberOfTickets"] = strconv.FormatUint(uint64(userTicket), 10)
 
 	bookings = append(bookings, userData)
+
+	fmt.Printf("These are the bookings %v\n: ", bookings)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets! You will recieve a confirmation email at %v\n", firstName, lastName, userTicket, email)
 	fmt.Printf("%v tickets are remaining for %v\n", remainingTicket, conferenceName)
